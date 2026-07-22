@@ -52,14 +52,24 @@ async function sendMetaCapiEvent(req, payload) {
         user_data: userData
     };
 
+    const body = { data: [event], access_token: accessToken };
+    // Set META_CAPI_TEST_EVENT_CODE in Vercel temporarily to make events show up
+    // under Events Manager > Test Events; remove it once verified.
+    const testEventCode = process.env.META_CAPI_TEST_EVENT_CODE;
+    if (testEventCode) body.test_event_code = testEventCode;
+
     try {
-        await fetch(`https://graph.facebook.com/${META_API_VERSION}/${META_PIXEL_ID}/events`, {
+        const res = await fetch(`https://graph.facebook.com/${META_API_VERSION}/${META_PIXEL_ID}/events`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ data: [event], access_token: accessToken })
+            body: JSON.stringify(body)
         });
+        if (!res.ok) {
+            console.error('Meta CAPI event rejected:', res.status, await res.text());
+        }
     } catch (err) {
-        // Swallow — see comment above.
+        // Non-fatal by design — logged only, never blocks GHL delivery.
+        console.error('Meta CAPI event failed:', err.message);
     }
 }
 
