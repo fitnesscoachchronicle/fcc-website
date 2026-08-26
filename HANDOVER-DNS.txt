@@ -1,0 +1,51 @@
+fitnesscoachchronicle.com — DNS RECORDS
+Captured 26 Aug 2026. Registrar: Squarespace. DNS currently hosted at Vercel.
+
+These are the live records. If anything goes missing after the move,
+compare against this list.
+
+--------------------------------------------------------------------
+WEBSITE
+--------------------------------------------------------------------
+Type: A      Name: @      Value: 64.29.17.1
+Type: A      Name: @      Value: 64.29.17.65
+Type: A      Name: www    Value: 216.198.79.1
+Type: A      Name: www    Value: 216.198.79.65
+
+(These change when Jamie attaches the domain to his own Vercel project
+ — Vercel will tell him what to use. Everything below must NOT change.)
+
+--------------------------------------------------------------------
+EMAIL — Google Workspace. Get these wrong and mail breaks.
+--------------------------------------------------------------------
+Type: MX     Name: @      Priority: 1     Value: smtp.google.com
+
+Type: TXT    Name: @
+Value: v=spf1 include:_spf.google.com ~all
+
+Type: TXT    Name: _dmarc
+Value: v=DMARC1; p=none; rua=mailto:contact@fitnesscoachchronicle.com
+
+Type: TXT    Name: google._domainkey
+Value (ONE line, no spaces or line breaks added):
+v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5qkuduvqadodKVeGCHHUkWWO3m7m5IGnIgE/wgydleZbsTLTkgL/+evYXnKprY+aaWc3iRFRiASOawAQvAtjWyyfkdtdoyRnGUVXDrGNQ7ZSSqIhfJbQqwAMUuDGMjQkIi7zXd54SpAM7G12NK5iojhd2vFInmRXW2oEI++NOsSfslTdQYsO7/xA2q/x2kjt2h5XjsaD4s3rhYT3IAg4wCrIKg311xB3gEtKZz9FEs/VZHfdoOr4zxOIPhGRVz+Cx56t6rnqMQW2esEyGHZ410jdO7UE91IQMpJDenIA6w5PrK0V6iiSJ+cmuGov02O0QzWnpSWT9svtltKXYzrb+wIDAQAB
+
+--------------------------------------------------------------------
+VERIFICATION
+--------------------------------------------------------------------
+Type: TXT    Name: @
+Value: google-site-verification=BAoBhjDVRbdTeqE6uO1Aj39xBh1uyMzC2M_2ujWk8Yg
+
+--------------------------------------------------------------------
+AFTER THE MOVE — check these
+--------------------------------------------------------------------
+1. Website loads at fitnesscoachchronicle.com and www
+2. Send an email TO the business address — it arrives
+3. Send an email FROM it — it doesn't land in spam
+
+This list was built by looking the records up from outside, which can
+only find records whose names are guessed. To get the guaranteed
+complete list, run:
+
+    vercel login
+    vercel dns ls fitnesscoachchronicle.com
