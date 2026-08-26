@@ -306,7 +306,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({
                     name: `${firstName} ${lastName}`.trim(),
                     firstName, lastName, email, phone,
-                    source, tags
+                    source, tags,
+                    customField: {
+                        guide_requested: source
+                    }
                 }),
                 keepalive: true
             }).catch(() => {});
