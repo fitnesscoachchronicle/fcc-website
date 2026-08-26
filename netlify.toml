@@ -1,0 +1,15 @@
+# Netlify is used ONLY to host the internal workshop calendar as a shareable link.
+# The public site deploys via Vercel (see vercel.json) — this file must never
+# publish the repo root, or the internal reports and drafts would go public too.
+[build]
+  publish = "deploy-calendar"
+  command = ""
+
+# Belt and braces: keep the internal calendar out of search engines.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

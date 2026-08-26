@@ -1,3 +1,6 @@
 seo-report*.html
 fcc-keyword-research-report.html
 research/
+course-calendar.html
+deploy-calendar/
+netlify.toml

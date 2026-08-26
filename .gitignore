@@ -9,3 +9,13 @@ package.json
 seo-report*.html
 fcc-keyword-research-report.html
 research/
+
+# Internal workshop planner — the deployable copy lives in deploy-calendar/.
+# This root duplicate is local-only and must never reach the public Vercel site.
+course-calendar.html
+
+# Netlify local deploy state (mirrors the .vercel/ rule above)
+.netlify/
+
+# Unreferenced source photos
+images/*(1)*

@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Calendar &amp; Targets 2026/27 | The Fitness Coach Chronicle</title>
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Internal planning document. No tracking scripts, no CTAs — this is not a public page. -->
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --primary: #109baa;
+      --secondary: #1ee6fd;
+      --dark: #07090d;
+      --surface: rgba(255,255,255,0.03);
+      --surface-border: rgba(255,255,255,0.07);
+      --white: #ffffff;
+      --text-body: #8a9ab0;
+      --text-muted: #4a5568;
+      --text-heading: #f0f4f8;
+      --font-heading: 'Archivo', sans-serif;
+      --font-body: 'Karla', sans-serif;
+      --gold: #f5c842;
+      --green: #22c55e;
+      --amber: #fb923c;
+      --violet: #a78bfa;
+      --radius: 16px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--text-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .glow { position: fixed; border-radius: 50%; filter: blur(160px); z-index: 0; pointer-events: none; }
+    .glow-1 { width: 900px; height: 900px; background: radial-gradient(circle, rgba(16,155,170,0.16) 0%, transparent 65%); top: -300px; left: -200px; }
+    .glow-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(30,230,253,0.07) 0%, transparent 65%); bottom: 10%; right: -150px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7,9,13,0.85); backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: .9rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .nav-wordmark {
+      font-family: var(--font-heading); font-size: .95rem; font-weight: 900;
+      color: var(--text-heading); letter-spacing: -.2px;
+    }
+    .internal-badge {
+      font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px;
+      color: var(--gold); background: rgba(245,200,66,0.08);
+      border: 1px solid rgba(245,200,66,0.25); border-radius: 100px; padding: .25rem .8rem;
+      display: inline-flex; align-items: center; gap: .35rem;
+    }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+    /* ── Header ── */
+    .page-head { padding: 3.5rem 0 2rem; text-align: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--secondary); background: rgba(30,230,253,0.07);
+      border: 1px solid rgba(30,230,253,0.2); border-radius: 100px;
+      padding: .35rem 1rem; margin-bottom: 1.5rem;
+    }
+    .page-head h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 900; color: var(--text-heading);
+      line-height: 1.05; letter-spacing: -1.4px; margin-bottom: 1rem;
+    }
+    .page-head h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 50%, #a5f3f8 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shine 5s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+    .page-sub { font-size: 1.08rem; max-width: 660px; margin: 0 auto; line-height: 1.7; }
+
+    /* ── Tabs ── */
+    .tabs { display: flex; justify-content: center; gap: .5rem; margin: 2.5rem 0 0; }
+    .tab {
+      font-family: var(--font-heading); font-size: .92rem; font-weight: 800;
+      color: var(--text-body); background: rgba(255,255,255,0.03);
+      border: 1px solid var(--surface-border); border-radius: 12px;
+      padding: .7rem 1.6rem; cursor: pointer; transition: all .18s;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .tab:hover { border-color: rgba(30,230,253,0.35); color: var(--text-heading); }
+    .tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-color: transparent; color: #07090d;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Section heads ── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--secondary); margin-bottom: .75rem;
+    }
+    .section-head { text-align: center; margin-bottom: 2.25rem; }
+    .section-head h2 {
+      font-family: var(--font-heading); font-size: clamp(1.7rem, 3vw, 2.3rem);
+      font-weight: 900; color: var(--text-heading); line-height: 1.12; letter-spacing: -.7px;
+    }
+    .section-head p { font-size: 1rem; max-width: 640px; margin: .7rem auto 0; }
+
+    /* ── Facts ── */
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .fact {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--surface-border);
+      border-radius: 16px; padding: 1.2rem 1rem; text-align: center;
+    }
+    .fact i { font-size: 1.35rem; color: var(--secondary); }
+    .fact-value { font-family: var(--font-heading); font-size: 1.45rem; font-weight: 900; color: var(--text-heading); line-height: 1.1; margin-top: .35rem; }
+    .fact-label { font-size: .8rem; color: var(--text-body); line-height: 1.45; margin-top: .2rem; }
+
+    /* ── Year at a glance ── */
+    .year-view { padding: 3.5rem 0 1rem; }
+    .year-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .month-card {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--surface-border);
+      border-radius: 16px; padding: 1.1rem 1.15rem 1.25rem; transition: border-color .2s;
+    }
+    .month-card:hover { border-color: rgba(30,230,253,0.25); }
+    .month-card-head {
+      display: flex; align-items: baseline; gap: .5rem;
+      padding-bottom: .65rem; margin-bottom: .65rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .month-card-name { font-family: var(--font-heading); font-size: 1.02rem; font-weight: 900; color: var(--text-heading); letter-spacing: -.2px; }
+    .month-card-year { font-size: .68rem; font-weight: 700; letter-spacing: 1.5px; color: var(--text-muted); }
+    .month-card-count { margin-left: auto; font-size: .68rem; color: var(--text-muted); }
+
+    .day-row { display: flex; align-items: center; gap: .55rem; padding: .3rem 0; }
+    .day-num { flex-shrink: 0; min-width: 44px; font-size: .8rem; font-weight: 700; color: var(--text-heading); font-variant-numeric: tabular-nums; }
+    .day-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+    .tag {
+      font-size: .62rem; font-weight: 800; letter-spacing: .6px; text-transform: uppercase;
+      padding: .12rem .45rem; border-radius: 5px; white-space: nowrap; color: #07090d;
+    }
+    /* Ad-launch rows read differently from workshop rows */
+    .day-row.ad .day-num { color: var(--violet); font-weight: 600; }
+    .tag-ad {
+      background: transparent; color: var(--violet);
+      border: 1px dashed rgba(167,139,250,0.5);
+    }
+
+    .cohort-key { display: flex; flex-wrap: wrap; gap: .9rem; justify-content: center; margin-top: 1.75rem; }
+    .key-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--text-body); }
+    .key-dot { width: 9px; height: 9px; border-radius: 3px; flex-shrink: 0; }
+    .key-dot.ad { background: transparent; border: 1px dashed var(--violet); border-radius: 3px; }
+
+    .glance-note { text-align: center; font-size: .82rem; color: var(--text-muted); margin-top: 1rem; }
+    .glance-note b { color: var(--secondary); font-weight: 700; }
+
+    /* ── Block cards ── */
+    .blocks { padding: 3.5rem 0 4rem; }
+    .legend {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;
+      margin-bottom: 2.25rem; padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .legend-item { display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--text-body); }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    .intake-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .intake {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--surface-border);
+      border-radius: 20px; overflow: hidden; display: flex; flex-direction: column;
+      transition: border-color .2s, transform .2s, box-shadow .2s; position: relative;
+    }
+    .intake:hover {
+      border-color: rgba(30,230,253,0.3); transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 30px rgba(30,230,253,0.06);
+    }
+    .intake.is-closed { opacity: .5; }
+    .intake.is-closed:hover { transform: none; }
+    .intake-bar { height: 3px; }
+    .intake-inner { padding: 1.6rem 1.75rem 1.75rem; display: flex; flex-direction: column; flex: 1; }
+
+    .intake-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.1rem; }
+    .intake-course {
+      font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: .3rem; display: flex; align-items: center; gap: .4rem;
+    }
+    .intake-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--text-heading); line-height: 1.2; }
+    .intake-loc { font-size: .84rem; color: var(--text-muted); margin-top: .3rem; display: flex; align-items: center; gap: .35rem; }
+    .status {
+      flex-shrink: 0; font-size: .68rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1.2px; padding: .3rem .75rem; border-radius: 100px;
+      display: inline-flex; align-items: center; gap: .35rem; white-space: nowrap;
+    }
+
+    .start-block {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(255,255,255,0.02); border: 1px solid var(--surface-border);
+      border-radius: 14px; padding: .9rem 1.1rem; margin-bottom: 1rem;
+    }
+    .date-tile {
+      flex-shrink: 0; width: 56px; text-align: center;
+      background: linear-gradient(160deg, rgba(16,155,170,0.18), rgba(30,230,253,0.06));
+      border: 1px solid rgba(30,230,253,0.22); border-radius: 10px; padding: .35rem 0 .45rem;
+    }
+    .date-tile .d-mon { font-size: .6rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--secondary); }
+    .date-tile .d-day { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; color: var(--text-heading); line-height: 1.05; }
+    .start-label { font-size: .7rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--text-muted); }
+    .start-value { font-size: 1rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
+    .start-sub { font-size: .82rem; color: var(--text-body); }
+
+    /* ── Ad window panel ── */
+    .ad-panel {
+      background: rgba(167,139,250,0.05); border: 1px solid rgba(167,139,250,0.22);
+      border-radius: 14px; padding: .9rem 1.1rem; margin-bottom: 1.35rem;
+    }
+    .ad-panel-head {
+      display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+      font-size: .7rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--violet); margin-bottom: .6rem;
+    }
+    .ad-status { letter-spacing: .8px; }
+    .ad-dates { display: flex; align-items: center; gap: .6rem; font-size: .95rem; }
+    .ad-date { font-weight: 700; color: var(--text-heading); white-space: nowrap; }
+    .ad-arrow { color: var(--text-muted); flex-shrink: 0; }
+    .ad-targets {
+      display: flex; gap: 1.25rem; flex-wrap: wrap;
+      margin-top: .75rem; padding-top: .7rem; border-top: 1px solid rgba(167,139,250,0.15);
+      font-size: .82rem;
+    }
+    .ad-target b { color: var(--text-heading); font-family: var(--font-heading); font-weight: 900; }
+
+    /* ── Rail ── */
+    .rail-wrap { margin-bottom: 1.35rem; }
+    .rail-heading {
+      display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+      font-size: .7rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .rail-countdown { color: var(--gold); letter-spacing: .8px; }
+    .rail-countdown.urgent { color: var(--amber); }
+    .rail-countdown.done { color: var(--text-muted); }
+    .rail { position: relative; height: 4px; background: rgba(255,255,255,0.07); border-radius: 100px; margin: 0 6px 2.6rem; }
+    .rail-fill { position: absolute; inset: 0 auto 0 0; border-radius: 100px; background: linear-gradient(90deg, var(--violet), var(--secondary)); }
+    .rail-node { position: absolute; top: 50%; transform: translate(-50%, -50%); }
+    .rail-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--dark); border: 2px solid rgba(255,255,255,0.22); }
+    .rail-node.reached .rail-dot { border-color: var(--secondary); background: var(--secondary); box-shadow: 0 0 0 4px rgba(30,230,253,0.12); }
+    .rail-cap { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+    .rail-node.cap-start .rail-cap { left: 0; transform: none; text-align: left; }
+    .rail-node.cap-end .rail-cap { left: auto; right: 0; transform: none; text-align: right; }
+    .rail-cap-label { font-size: .63rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); }
+    .rail-cap-date { font-size: .82rem; font-weight: 700; color: var(--text-heading); }
+    .rail-node.reached .rail-cap-label { color: var(--secondary); }
+
+    /* ── Workshop list ── */
+    .ws-head {
+      font-size: .7rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: .5rem; display: flex; align-items: center; gap: .4rem;
+    }
+    .key-dates { list-style: none; }
+    .key-dates li {
+      display: flex; align-items: center; gap: .65rem; padding: .5rem 0; font-size: .88rem;
+      border-bottom: 1px solid rgba(255,255,255,0.035);
+    }
+    .key-dates li:last-child { border-bottom: none; }
+    .ws-num {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: .7rem; font-weight: 900;
+      background: rgba(255,255,255,0.05); color: var(--text-body);
+    }
+    .kd-label { flex: 1; color: var(--text-body); }
+    .kd-type {
+      font-size: .6rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase;
+      padding: .1rem .4rem; border-radius: 4px; margin-left: .3rem;
+    }
+    .type-gym { background: rgba(30,230,253,0.12); color: var(--secondary); }
+    .type-pt { background: rgba(245,200,66,0.12); color: var(--gold); }
+    .kd-date { font-weight: 700; color: var(--text-heading); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .key-dates li.moved .kd-date { color: var(--gold); }
+
+    .intake-note {
+      font-size: .84rem; color: var(--text-body); line-height: 1.55;
+      background: rgba(255,255,255,0.02); border-left: 2px solid rgba(30,230,253,0.35);
+      padding: .6rem .9rem; border-radius: 0 8px 8px 0; margin-top: 1.25rem;
+    }
+
+    /* ═══ GOALS TAB ═══ */
+    .goals { padding: 3rem 0 4rem; }
+
+    .assumptions {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .input-card {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--surface-border);
+      border-radius: 16px; padding: 1.15rem 1.25rem;
+    }
+    .input-label {
+      font-size: .7rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: .5rem; display: flex; align-items: center; gap: .4rem;
+    }
+    .input-label i { color: var(--secondary); font-size: .9rem; }
+    .input-row { display: flex; align-items: baseline; gap: .5rem; }
+    .input-row input {
+      width: 100%; font-family: var(--font-heading); font-size: 1.9rem; font-weight: 900;
+      color: var(--text-heading); background: transparent; border: none;
+      border-bottom: 2px solid var(--surface-border); padding: 0 0 .2rem;
+      outline: none; transition: border-color .2s; -moz-appearance: textfield;
+    }
+    .input-row input:focus { border-bottom-color: var(--secondary); }
+    .input-row input::-webkit-outer-spin-button,
+    .input-row input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .input-suffix { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900; color: var(--text-muted); }
+    .input-hint { font-size: .78rem; color: var(--text-muted); margin-top: .5rem; line-height: 1.5; }
+
+    .base-toggle {
+      display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+      background: rgba(255,255,255,0.02); border: 1px solid var(--surface-border);
+      border-radius: 12px; padding: .8rem 1.1rem; margin-bottom: 2.5rem;
+      font-size: .85rem;
+    }
+    .base-toggle .toggle-label { font-weight: 700; color: var(--text-heading); }
+    .seg { display: flex; gap: .3rem; margin-left: auto; }
+    .seg button {
+      font-family: var(--font-body); font-size: .8rem; font-weight: 700;
+      color: var(--text-body); background: rgba(255,255,255,0.03);
+      border: 1px solid var(--surface-border); border-radius: 8px;
+      padding: .35rem .9rem; cursor: pointer; transition: all .18s;
+    }
+    .seg button:hover { color: var(--text-heading); border-color: rgba(30,230,253,0.3); }
+    .seg button.on { background: var(--secondary); border-color: transparent; color: #07090d; }
+
+    /* Funnel */
+    .funnel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+    .funnel-step {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--surface-border);
+      border-radius: 18px; padding: 1.5rem 1.25rem; text-align: center; position: relative;
+    }
+    .funnel-step.final {
+      background: linear-gradient(160deg, rgba(16,155,170,0.14), rgba(30,230,253,0.04));
+      border-color: rgba(30,230,253,0.3);
+    }
+    .funnel-icon { font-size: 1.5rem; color: var(--secondary); }
+    .funnel-num {
+      font-family: var(--font-heading); font-size: 3rem; font-weight: 900;
+      color: var(--text-heading); line-height: 1; margin: .4rem 0 .2rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .funnel-name { font-family: var(--font-heading); font-size: .92rem; font-weight: 800; color: var(--text-heading); }
+    .funnel-sub { font-size: .8rem; color: var(--text-muted); margin-top: .2rem; }
+    /* Sits centred in the 1rem gap between steps, not over the next card. */
+    .funnel-rate {
+      position: absolute; top: 50%; left: calc(100% + .5rem); transform: translate(-50%, -50%);
+      z-index: 2; font-size: .68rem; font-weight: 800; letter-spacing: .5px;
+      background: var(--dark); border: 1px solid var(--surface-border);
+      border-radius: 100px; padding: .15rem .5rem; color: var(--secondary);
+    }
+
+    .pace-note {
+      text-align: center; font-size: .88rem; color: var(--text-body);
+      background: rgba(255,255,255,0.02); border: 1px solid var(--surface-border);
+      border-radius: 12px; padding: .85rem 1.25rem; margin-bottom: 3rem;
+    }
+    .pace-note b { color: var(--text-heading); font-weight: 700; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--surface-border); border-radius: 16px; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    thead th {
+      font-family: var(--font-heading); font-size: .68rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1.4px; color: var(--text-muted);
+      text-align: right; padding: .9rem 1rem; background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--surface-border); white-space: nowrap;
+    }
+    thead th:first-child, tbody td:first-child { text-align: left; }
+    tbody td {
+      padding: .85rem 1rem; font-size: .88rem; text-align: right;
+      border-bottom: 1px solid rgba(255,255,255,0.04); font-variant-numeric: tabular-nums;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.015); }
+    .t-block { font-weight: 700; color: var(--text-heading); display: flex; align-items: center; gap: .5rem; }
+    .t-swatch { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+    .t-num { font-family: var(--font-heading); font-weight: 900; color: var(--text-heading); }
+    .t-students { color: var(--secondary); }
+    tfoot td {
+      padding: 1rem; font-size: .92rem; text-align: right;
+      background: rgba(255,255,255,0.03); border-top: 1px solid var(--surface-border);
+      font-family: var(--font-heading); font-weight: 900; color: var(--text-heading);
+      font-variant-numeric: tabular-nums;
+    }
+    tfoot td:first-child { text-align: left; letter-spacing: .5px; }
+
+    /* Year total */
+    .year-total {
+      margin-top: 2.5rem;
+      background: linear-gradient(160deg, rgba(16,155,170,0.14), rgba(30,230,253,0.04));
+      border: 1px solid rgba(30,230,253,0.3); border-radius: 20px;
+      padding: 2.25rem; text-align: center;
+    }
+    .year-total-label {
+      font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--secondary); margin-bottom: .5rem;
+    }
+    .year-total-num {
+      font-family: var(--font-heading); font-size: clamp(3.5rem, 9vw, 5.5rem); font-weight: 900;
+      color: var(--text-heading); line-height: 1; letter-spacing: -2px;
+      font-variant-numeric: tabular-nums;
+    }
+    .year-total-sub { font-size: 1rem; color: var(--text-body); margin-top: .5rem; }
+    .year-total-breakdown {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
+      margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(30,230,253,0.15);
+    }
+    .ytb-item { text-align: center; }
+    .ytb-num { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; color: var(--text-heading); line-height: 1.1; }
+    .ytb-label { font-size: .75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; }
+
+    /* ── Footer ── */
+    .footer { border-top: 1px solid var(--surface-border); padding: 2rem 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+    .footer-copy { font-size: .78rem; color: var(--text-muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1000px) {
+      .year-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .intake-grid { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .assumptions { grid-template-columns: 1fr; }
+      .funnel { grid-template-columns: 1fr; }
+      .funnel-rate { top: auto; bottom: -1.1rem; left: 50%; transform: translateX(-50%); }
+    }
+    @media (max-width: 680px) {
+      .year-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .page-head { padding: 2.5rem 0 1.5rem; }
+      .container { padding: 0 1.25rem; }
+      .tabs { flex-direction: column; }
+      .tab { justify-content: center; }
+      .intake-inner { padding: 1.35rem 1.25rem 1.5rem; }
+      .intake-top { flex-direction: column-reverse; align-items: flex-start; gap: .75rem; }
+      .rail-cap-date { font-size: .75rem; }
+      .rail-cap-label { font-size: .58rem; }
+      .seg { margin-left: 0; width: 100%; }
+      .seg button { flex: 1; }
+      .year-total { padding: 1.75rem 1.25rem; }
+      .year-total-breakdown { gap: 1.5rem; }
+    }
+    @media (max-width: 420px) {
+      .year-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; color: #111; }
+      .glow, .nav, .tabs, .footer { display: none !important; }
+      .tab-panel { display: block !important; }
+      .intake, .month-card { break-inside: avoid; border-color: #ccc; }
+      .intake-title, .month-card-name, .kd-date, .day-num, .funnel-num, .year-total-num { color: #111; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-wordmark">The Fitness Coach Chronicle</span>
+      <span class="internal-badge"><i class="ph-fill ph-lock-simple"></i> Internal planning — not published</span>
+    </div>
+  </nav>
+
+  <!-- ══ HEADER ══ -->
+  <header class="page-head">
+    <div class="container">
+      <div class="eyebrow"><i class="ph-fill ph-calendar-dots"></i> <span id="year-label">Workshop Calendar</span></div>
+      <h1>Workshop dates &amp;<br><em>lead targets.</em></h1>
+      <p class="page-sub">
+        Five Saturday workshops per block, three weeks apart, at Platform Gym. A new block every eight weeks.
+        Ads for each block go live 60 days before its first workshop.
+      </p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="calendar"><i class="ph-fill ph-calendar-blank"></i> Calendar</button>
+        <button class="tab" data-tab="goals"><i class="ph-fill ph-target"></i> Goals &amp; Targets</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ CALENDAR TAB ══════════════ -->
+  <div class="tab-panel active" id="panel-calendar">
+
+    <div class="container">
+      <div class="facts">
+        <div class="fact">
+          <i class="ph-duotone ph-calendar-check"></i>
+          <div class="fact-value">5</div>
+          <div class="fact-label">Saturday workshops per block</div>
+        </div>
+        <div class="fact">
+          <i class="ph-duotone ph-arrows-out-line-horizontal"></i>
+          <div class="fact-value">3 weeks</div>
+          <div class="fact-label">Between each workshop</div>
+        </div>
+        <div class="fact">
+          <i class="ph-duotone ph-repeat"></i>
+          <div class="fact-value">8 weeks</div>
+          <div class="fact-label">Between each new block</div>
+        </div>
+        <div class="fact">
+          <i class="ph-duotone ph-megaphone"></i>
+          <div class="fact-value">60 days</div>
+          <div class="fact-label">Ad run before each start date</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Year at a glance -->
+    <section class="year-view">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label" style="justify-content:center; display:flex;"><i class="ph-fill ph-calendar-blank"></i> The full year</div>
+          <h2>Every date, month by month</h2>
+          <p>Solid tags are workshops — always a Saturday at Platform Gym. Dashed tags are the day that block's ads go live.</p>
+        </div>
+        <div class="year-grid" id="year-grid"></div>
+        <div class="cohort-key" id="cohort-key"></div>
+        <p class="glance-note" id="glance-note"></p>
+      </div>
+    </section>
+
+    <!-- Block cards -->
+    <section class="blocks">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label" style="justify-content:center; display:flex;"><i class="ph-fill ph-stack"></i> Block by block</div>
+          <h2>Ad windows and workshop dates</h2>
+          <p>Ads run for 60 days and stop the day the block starts — enrolment closes on the first workshop.</p>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background:var(--green)"></span> Ads live now</div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--amber)"></span> Closing soon</div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--violet)"></span> Ads not started</div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--text-muted)"></span> Closed</div>
+        </div>
+
+        <div class="intake-grid" id="calendar-root"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════════ GOALS TAB ══════════════ -->
+  <div class="tab-panel" id="panel-goals">
+    <section class="goals">
+      <div class="container">
+
+        <div class="section-head">
+          <div class="section-label" style="justify-content:center; display:flex;"><i class="ph-fill ph-target"></i> Per block</div>
+          <h2>The funnel, one block at a time</h2>
+          <p>Change any number and everything below recalculates.</p>
+        </div>
+
+        <div class="assumptions">
+          <div class="input-card">
+            <div class="input-label"><i class="ph-fill ph-users"></i> Leads per block</div>
+            <div class="input-row"><input type="number" id="in-leads" value="60" min="0" step="1"></div>
+            <p class="input-hint">Enquiries generated across the 60-day ad window.</p>
+          </div>
+          <div class="input-card">
+            <div class="input-label"><i class="ph-fill ph-phone-call"></i> Booked call rate</div>
+            <div class="input-row"><input type="number" id="in-call" value="50" min="0" max="100" step="1"><span class="input-suffix">%</span></div>
+            <p class="input-hint">Share of leads that book a call with Jamie.</p>
+          </div>
+          <div class="input-card">
+            <div class="input-label"><i class="ph-fill ph-graduation-cap"></i> Close rate</div>
+            <div class="input-row"><input type="number" id="in-close" value="10" min="0" max="100" step="1"><span class="input-suffix">%</span></div>
+            <p class="input-hint">Share that enrols. Set what it applies to below.</p>
+          </div>
+        </div>
+
+        <div class="base-toggle">
+          <span class="toggle-label">Close rate applies to</span>
+          <span id="base-explainer" style="font-size:.82rem; color:var(--text-muted);"></span>
+          <span class="seg">
+            <button id="base-calls">Booked calls</button>
+            <button id="base-leads" class="on">All leads</button>
+          </span>
+        </div>
+
+        <div class="funnel">
+          <div class="funnel-step">
+            <i class="ph-duotone ph-megaphone funnel-icon"></i>
+            <div class="funnel-num" id="f-leads">60</div>
+            <div class="funnel-name">Leads</div>
+            <div class="funnel-sub">per block</div>
+            <span class="funnel-rate" id="rate-1">50%</span>
+          </div>
+          <div class="funnel-step">
+            <i class="ph-duotone ph-phone-call funnel-icon"></i>
+            <div class="funnel-num" id="f-calls">30</div>
+            <div class="funnel-name">Booked calls</div>
+            <div class="funnel-sub">per block</div>
+            <span class="funnel-rate" id="rate-2">10%</span>
+          </div>
+          <div class="funnel-step final">
+            <i class="ph-duotone ph-student funnel-icon"></i>
+            <div class="funnel-num" id="f-students">6</div>
+            <div class="funnel-name">Students</div>
+            <div class="funnel-sub" id="f-students-sub">per block</div>
+          </div>
+        </div>
+
+        <p class="pace-note" id="pace-note"></p>
+
+        <div class="section-head">
+          <div class="section-label" style="justify-content:center; display:flex;"><i class="ph-fill ph-table"></i> Block by block</div>
+          <h2>The year in numbers</h2>
+          <p>Each block's ad window, deadline, and the targets that have to land inside it.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Block</th>
+                <th>Ads live</th>
+                <th>Ads stop / deadline</th>
+                <th>Leads</th>
+                <th>Leads / week</th>
+                <th>Calls</th>
+                <th>Students</th>
+              </tr>
+            </thead>
+            <tbody id="goals-tbody"></tbody>
+            <tfoot id="goals-tfoot"></tfoot>
+          </table>
+        </div>
+
+        <div class="year-total">
+          <div class="year-total-label">Projected students — full calendar</div>
+          <div class="year-total-num" id="yt-students">42</div>
+          <div class="year-total-sub" id="yt-sub"></div>
+          <div class="year-total-breakdown">
+            <div class="ytb-item"><div class="ytb-num" id="yt-blocks">7</div><div class="ytb-label">Blocks</div></div>
+            <div class="ytb-item"><div class="ytb-num" id="yt-leads">420</div><div class="ytb-label">Leads</div></div>
+            <div class="ytb-item"><div class="ytb-num" id="yt-calls">210</div><div class="ytb-label">Booked calls</div></div>
+            <div class="ytb-item"><div class="ytb-num" id="yt-perblock">6</div><div class="ytb-label">Students / block</div></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">Internal planning document — The Fitness Coach Chronicle</p>
+        <p class="footer-copy" id="footer-updated"></p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE SCHEDULE — the only part that needs editing.
+
+   Pattern: 5 in-person workshops, 3 weeks apart, always a Saturday.
+   A new block starts every 8 weeks (56 days). 8 weeks is deliberate: it offsets
+   each block from the last by two weeks, so no two blocks ever land on the same
+   Saturday. A 9-week cadence would collide on six dates a year.
+
+   Workshops 1–2 are gym-based, 3–5 are personal training.
+   Enrolment closes on the day of workshop 1.
+   Ads run for AD_LEAD_DAYS before that date — derived, not stored.
+
+   Fields:
+     block      : block number (drives colour + badge)
+     name       : card title
+     startDate  : workshop 1 — the enrolment deadline and the ad stop date
+     location   : venue
+     workshops  : 5 × { date, type: 'gym' | 'pt', moved: true (optional) }
+     note       : optional callout line
+   ═══════════════════════════════════════════════════════════════════════════ */
+const VENUE = 'Platform Gym, Edinburgh';
+const AD_LEAD_DAYS = 60;
+
+const BLOCKS = [
+  {
+    block: 1,
+    name: 'Block 1 — October',
+    startDate: '2026-10-03',
+    location: VENUE,
+    workshops: [
+      { date: '2026-10-03', type: 'gym' },
+      { date: '2026-10-24', type: 'gym' },
+      { date: '2026-11-14', type: 'pt' },
+      { date: '2026-12-05', type: 'pt' },
+      { date: '2027-01-16', type: 'pt', moved: true }
+    ],
+    note: 'Workshop 5 moved to 16 January — the three-week slot landed on Boxing Day, and the Saturdays either side are New Year and Block 2’s workshop 3.'
+  },
+  {
+    block: 2,
+    name: 'Block 2 — November',
+    startDate: '2026-11-28',
+    location: VENUE,
+    workshops: [
+      { date: '2026-11-28', type: 'gym' },
+      { date: '2026-12-19', type: 'gym' },
+      { date: '2027-01-09', type: 'pt' },
+      { date: '2027-01-30', type: 'pt' },
+      { date: '2027-02-20', type: 'pt' }
+    ],
+    note: 'The three-week gap after workshop 2 falls neatly over Christmas and New Year — no dates need moving.'
+  },
+  {
+    block: 3,
+    name: 'Block 3 — January',
+    startDate: '2027-01-23',
+    location: VENUE,
+    workshops: [
+      { date: '2027-01-23', type: 'gym' },
+      { date: '2027-02-13', type: 'gym' },
+      { date: '2027-03-06', type: 'pt' },
+      { date: '2027-04-03', type: 'pt', moved: true },
+      { date: '2027-04-24', type: 'pt' }
+    ],
+    note: 'Workshops 4 and 5 pushed a week to clear Easter Saturday (27 March), making one four-week gap mid-block.'
+  },
+  {
+    block: 4,
+    name: 'Block 4 — March',
+    startDate: '2027-03-20',
+    location: VENUE,
+    workshops: [
+      { date: '2027-03-20', type: 'gym' },
+      { date: '2027-04-10', type: 'gym' },
+      { date: '2027-05-01', type: 'pt' },
+      { date: '2027-05-22', type: 'pt' },
+      { date: '2027-06-12', type: 'pt' }
+    ]
+  },
+  {
+    block: 5,
+    name: 'Block 5 — May',
+    startDate: '2027-05-15',
+    location: VENUE,
+    workshops: [
+      { date: '2027-05-15', type: 'gym' },
+      { date: '2027-06-05', type: 'gym' },
+      { date: '2027-06-26', type: 'pt' },
+      { date: '2027-07-17', type: 'pt' },
+      { date: '2027-08-07', type: 'pt' }
+    ]
+  },
+  {
+    block: 6,
+    name: 'Block 6 — July',
+    startDate: '2027-07-10',
+    location: VENUE,
+    workshops: [
+      { date: '2027-07-10', type: 'gym' },
+      { date: '2027-07-31', type: 'gym' },
+      { date: '2027-08-21', type: 'pt' },
+      { date: '2027-09-11', type: 'pt' },
+      { date: '2027-10-02', type: 'pt' }
+    ]
+  },
+  {
+    block: 7,
+    name: 'Block 7 — September',
+    startDate: '2027-09-04',
+    location: VENUE,
+    workshops: [
+      { date: '2027-09-04', type: 'gym' },
+      { date: '2027-09-25', type: 'gym' },
+      { date: '2027-10-16', type: 'pt' },
+      { date: '2027-11-06', type: 'pt' },
+      { date: '2027-11-27', type: 'pt' }
+    ]
+  }
+];
+
+/* Block colours: a teal→cyan ramp, alternating light/dark so blocks sharing a
+   month never look alike. All light enough to carry dark tag text. */
+const BLOCK_COLOURS = ['#1ee6fd', '#17a2b8', '#7ae4ef', '#2bb6c9', '#a5f3f8', '#109baa', '#56d6e8'];
+const blockColour = n => BLOCK_COLOURS[(n - 1) % BLOCK_COLOURS.length];
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HELPERS
+   ═══════════════════════════════════════════════════════════════════════════ */
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAY = 86400000;
+const today = startOfDay(new Date());
+
+function startOfDay(d) { const x = new Date(d); x.setHours(0,0,0,0); return x; }
+function parseDate(s) { if (!s) return null; const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); }
+function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+function fmt(d) { return d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : 'TBC'; }
+function fmtLong(d) { return d ? d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'TBC'; }
+function fmtShort(d) { return d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : 'TBC'; }
+function fmtMed(d) { return d ? d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }) : 'TBC'; }
+function fmtDay(d) { return d ? d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric' }) : ''; }
+function daysBetween(a, b) { return Math.round((startOfDay(b) - startOfDay(a)) / DAY); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+const adStart = b => addDays(parseDate(b.startDate), -AD_LEAD_DAYS);
+const lastWorkshop = b => parseDate(b.workshops[b.workshops.length - 1].date);
+
+const STATUS_STYLES = {
+  live:    { text: 'Ads live now',     color: '#22c55e', icon: 'ph-broadcast' },
+  closing: { text: 'Closing soon',     color: '#fb923c', icon: 'ph-hourglass-high' },
+  pending: { text: 'Ads not started',  color: '#a78bfa', icon: 'ph-clock-countdown' },
+  closed:  { text: 'Closed',           color: '#4a5568', icon: 'ph-lock-simple' }
+};
+
+function resolveStatus(b) {
+  const open = adStart(b);
+  const close = parseDate(b.startDate);
+  if (today < open) return 'pending';
+  if (today > close) return 'closed';
+  if (daysBetween(today, close) <= 14) return 'closing';
+  return 'live';
+}
+
+function countdownText(b, status) {
+  if (status === 'pending') {
+    const d = daysBetween(today, adStart(b));
+    return { text: d === 0 ? 'Ads start today' : 'Ads start in ' + d + ' day' + (d === 1 ? '' : 's'), cls: '' };
+  }
+  if (status === 'closed') return { text: 'Closed', cls: 'done' };
+  const d = daysBetween(today, parseDate(b.startDate));
+  if (d === 0) return { text: 'Last day', cls: 'urgent' };
+  return { text: d + ' day' + (d === 1 ? '' : 's') + ' of ads left', cls: d <= 14 ? 'urgent' : '' };
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CALENDAR TAB
+   ═══════════════════════════════════════════════════════════════════════════ */
+function railHtml(b) {
+  const open = adStart(b);
+  const close = parseDate(b.startDate);
+  const span = Math.max(1, close - open);
+  const progress = Math.min(100, Math.max(0, ((today - open) / span) * 100));
+
+  const nodes = [
+    { pct: 0,   cls: 'cap-start', label: 'Ads live',      date: fmtShort(open),  reached: today >= open },
+    { pct: 100, cls: 'cap-end',   label: 'Ads stop / W1', date: fmtShort(close), reached: today >= close }
+  ];
+
+  return `
+    <div class="rail">
+      <div class="rail-fill" style="width:${progress}%"></div>
+      ${nodes.map(n => `
+        <div class="rail-node ${n.cls} ${n.reached ? 'reached' : ''}" style="left:${n.pct}%">
+          <div class="rail-dot"></div>
+          <div class="rail-cap">
+            <div class="rail-cap-label">${n.label}</div>
+            <div class="rail-cap-date">${n.date}</div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function blockCard(b) {
+  const status = resolveStatus(b);
+  const s = STATUS_STYLES[status];
+  const start = parseDate(b.startDate);
+  const open = adStart(b);
+  const cd = countdownText(b, status);
+  const colour = blockColour(b.block);
+  const isClosed = status === 'closed';
+
+  let gym = 0, pt = 0;
+  const rows = b.workshops.map((w, i) => {
+    const d = parseDate(w.date);
+    const label = w.type === 'gym' ? 'Gym practical ' + (++gym) : 'PT practical ' + (++pt);
+    return `
+      <li class="${w.moved ? 'moved' : ''}">
+        <span class="ws-num">${i + 1}</span>
+        <span class="kd-label">${label}<span class="kd-type ${w.type === 'gym' ? 'type-gym' : 'type-pt'}">${w.type === 'gym' ? 'Gym' : 'PT'}</span></span>
+        <span class="kd-date">${fmtMed(d)}</span>
+      </li>`;
+  }).join('');
+
+  return `
+  <article class="intake ${isClosed ? 'is-closed' : ''}" data-block="${b.block}">
+    <div class="intake-bar" style="background:${isClosed ? 'rgba(255,255,255,.08)' : 'linear-gradient(90deg,' + colour + ',var(--secondary))'}"></div>
+    <div class="intake-inner">
+
+      <div class="intake-top">
+        <div>
+          <div class="intake-course" style="color:${colour}">
+            <i class="ph-duotone ph-graduation-cap"></i> Block ${b.block} · 5 Saturdays
+          </div>
+          <div class="intake-title">${esc(b.name)}</div>
+          <div class="intake-loc"><i class="ph-fill ph-map-pin"></i> ${esc(b.location)}</div>
+        </div>
+        <span class="status" style="color:${s.color}; background:${s.color}1a; border:1px solid ${s.color}40;">
+          <i class="ph-fill ${s.icon}"></i> ${s.text}
+        </span>
+      </div>
+
+      <div class="start-block">
+        <div class="date-tile">
+          <div class="d-mon">${start.toLocaleDateString('en-GB', { month: 'short' })}</div>
+          <div class="d-day">${start.getDate()}</div>
+        </div>
+        <div>
+          <div class="start-label">Workshop 1 · enrolment deadline</div>
+          <div class="start-value">${fmtLong(start)}</div>
+          <div class="start-sub">Block finishes ${fmt(lastWorkshop(b))}</div>
+        </div>
+      </div>
+
+      <div class="ad-panel">
+        <div class="ad-panel-head">
+          <span><i class="ph-fill ph-megaphone"></i> Ad run — ${AD_LEAD_DAYS} days</span>
+          <span class="ad-status" style="color:${s.color}">${cd.text}</span>
+        </div>
+        <div class="ad-dates">
+          <span class="ad-date">${fmtMed(open)} ${open.getFullYear()}</span>
+          <i class="ph-bold ph-arrow-right ad-arrow"></i>
+          <span class="ad-date">${fmtMed(start)} ${start.getFullYear()}</span>
+        </div>
+        <div class="ad-targets" data-targets-for="${b.block}"></div>
+      </div>
+
+      <div class="rail-wrap">
+        <div class="rail-heading">
+          <span><i class="ph-fill ph-chart-line-up"></i> Window progress</span>
+        </div>
+        ${railHtml(b)}
+      </div>
+
+      <div class="ws-head"><i class="ph-fill ph-list-checks"></i> The five Saturdays</div>
+      <ul class="key-dates">${rows}</ul>
+
+      ${b.note ? `<p class="intake-note">${esc(b.note)}</p>` : ''}
+
+    </div>
+  </article>`;
+}
+
+function renderYearView() {
+  const entries = [];
+
+  BLOCKS.forEach(b => {
+    let gym = 0, pt = 0;
+    b.workshops.forEach((w, i) => {
+      const label = w.type === 'gym' ? 'Gym ' + (++gym) : 'PT ' + (++pt);
+      entries.push({ date: parseDate(w.date), block: b.block, label, kind: 'ws' });
+    });
+    entries.push({ date: adStart(b), block: b.block, label: 'Ads live', kind: 'ad' });
+  });
+  entries.sort((a, b) => a.date - b.date || (a.kind === 'ad' ? -1 : 1));
+
+  const months = [];
+  entries.forEach(e => {
+    const key = e.date.getFullYear() + '-' + e.date.getMonth();
+    let m = months.find(x => x.key === key);
+    if (!m) { m = { key, date: e.date, days: [] }; months.push(m); }
+    let d = m.days.find(x => x.time === e.date.getTime() && x.kind === e.kind);
+    if (!d) { d = { time: e.date.getTime(), date: e.date, kind: e.kind, items: [] }; m.days.push(d); }
+    d.items.push(e);
+  });
+  months.forEach(m => m.days.sort((a, b) => a.time - b.time || (a.kind === 'ad' ? -1 : 1)));
+
+  // Collision check across workshops only — two blocks must never share a Saturday
+  const seen = {}; const doubles = [];
+  entries.filter(e => e.kind === 'ws').forEach(e => {
+    if (seen[e.date.getTime()]) doubles.push(e.date);
+    seen[e.date.getTime()] = e.block;
+  });
+
+  document.getElementById('year-grid').innerHTML = months.map(m => `
+    <div class="month-card">
+      <div class="month-card-head">
+        <span class="month-card-name">${MONTHS[m.date.getMonth()]}</span>
+        <span class="month-card-year">'${String(m.date.getFullYear()).slice(2)}</span>
+        <span class="month-card-count">${m.days.filter(d => d.kind === 'ws').reduce((n, d) => n + d.items.length, 0)}</span>
+      </div>
+      ${m.days.map(d => `
+        <div class="day-row ${d.kind === 'ad' ? 'ad' : ''}">
+          <span class="day-num">${fmtDay(d.date)}</span>
+          <span class="day-tags">
+            ${d.items.map(it => it.kind === 'ad'
+              ? `<span class="tag tag-ad">B${it.block} ads live</span>`
+              : `<span class="tag" style="background:${blockColour(it.block)}">B${it.block} ${it.label}</span>`).join('')}
+          </span>
+        </div>`).join('')}
+    </div>`).join('');
+
+  document.getElementById('cohort-key').innerHTML =
+    BLOCKS.map(b => `<span class="key-item"><span class="key-dot" style="background:${blockColour(b.block)}"></span> ${esc(b.name)}</span>`).join('')
+    + '<span class="key-item"><span class="key-dot ad"></span> Ads go live</span>';
+
+  document.getElementById('glance-note').innerHTML = doubles.length
+    ? '<b>' + doubles.length + ' Saturdays clash</b> — ' + doubles.map(fmtShort).join(', ')
+    : 'Every block has the gym to itself — <b>no two blocks ever share a Saturday</b>.';
+}
+
+function renderBlocks() {
+  document.getElementById('calendar-root').innerHTML =
+    BLOCKS.slice().sort((a, b) => parseDate(a.startDate) - parseDate(b.startDate)).map(blockCard).join('');
+}
+
+function renderYearLabel() {
+  const years = [...new Set(BLOCKS.flatMap(b => b.workshops.map(w => parseDate(w.date).getFullYear())))].sort();
+  document.getElementById('year-label').textContent =
+    'Workshop Calendar ' + (years.length > 1 ? years[0] + '/' + String(years[years.length - 1]).slice(2) : years[0]);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GOALS TAB
+   ═══════════════════════════════════════════════════════════════════════════ */
+let closeBase = 'leads';   // 'calls' | 'leads' — Jamie's 10% is of ALL leads
+
+function readInputs() {
+  const num = (id, fallback) => {
+    const v = parseFloat(document.getElementById(id).value);
+    return isNaN(v) || v < 0 ? fallback : v;
+  };
+  return { leads: num('in-leads', 0), callRate: num('in-call', 0) / 100, closeRate: num('in-close', 0) / 100 };
+}
+
+function computeTargets() {
+  const { leads, callRate, closeRate } = readInputs();
+  const calls = leads * callRate;
+  const students = (closeBase === 'calls' ? calls : leads) * closeRate;
+  const weeks = AD_LEAD_DAYS / 7;
+  return {
+    leads, calls, students, callRate, closeRate,
+    leadsPerWeek: leads / weeks,
+    leadsPerDay: leads / AD_LEAD_DAYS
+  };
+}
+
+function renderGoals() {
+  const t = computeTargets();
+  const r1 = (n, dp = 0) => n.toLocaleString('en-GB', { minimumFractionDigits: dp, maximumFractionDigits: dp });
+
+  document.getElementById('f-leads').textContent = r1(t.leads);
+  document.getElementById('f-calls').textContent = r1(t.calls, t.calls % 1 ? 1 : 0);
+  document.getElementById('f-students').textContent = r1(t.students, t.students % 1 ? 1 : 0);
+  document.getElementById('rate-1').textContent = r1(t.callRate * 100, 0) + '%';
+  // The close rate is measured off leads, not calls, so say so on the connector
+  document.getElementById('rate-2').textContent =
+    r1(t.closeRate * 100, 0) + '%' + (closeBase === 'leads' ? ' of leads' : '');
+  document.getElementById('f-students-sub').textContent = closeBase === 'leads'
+    ? r1(t.closeRate * 100) + '% of all ' + r1(t.leads) + ' leads'
+    : r1(t.closeRate * 100) + '% of ' + r1(t.calls, t.calls % 1 ? 1 : 0) + ' booked calls';
+
+  document.getElementById('base-explainer').textContent = closeBase === 'calls'
+    ? '— ' + r1(t.closeRate * 100) + '% of the ' + r1(t.calls, t.calls % 1 ? 1 : 0) + ' booked calls'
+    : '— ' + r1(t.closeRate * 100) + '% of all ' + r1(t.leads) + ' leads';
+
+  document.getElementById('pace-note').innerHTML =
+    'To hit <b>' + r1(t.leads) + ' leads</b> in a 60-day window you need <b>' + r1(t.leadsPerWeek, 1) + ' leads a week</b>'
+    + ' — about <b>' + r1(t.leadsPerDay, 1) + ' a day</b> for the whole run.';
+
+  const sorted = BLOCKS.slice().sort((a, b) => parseDate(a.startDate) - parseDate(b.startDate));
+  document.getElementById('goals-tbody').innerHTML = sorted.map(b => {
+    const status = resolveStatus(b);
+    return `
+    <tr${status === 'closed' ? ' style="opacity:.5"' : ''}>
+      <td><span class="t-block"><span class="t-swatch" style="background:${blockColour(b.block)}"></span>${esc(b.name)}</span></td>
+      <td>${fmtMed(adStart(b))} ${adStart(b).getFullYear()}</td>
+      <td>${fmtMed(parseDate(b.startDate))} ${parseDate(b.startDate).getFullYear()}</td>
+      <td class="t-num">${r1(t.leads)}</td>
+      <td>${r1(t.leadsPerWeek, 1)}</td>
+      <td class="t-num">${r1(t.calls, t.calls % 1 ? 1 : 0)}</td>
+      <td class="t-num t-students">${r1(t.students, t.students % 1 ? 1 : 0)}</td>
+    </tr>`;
+  }).join('');
+
+  const n = BLOCKS.length;
+  document.getElementById('goals-tfoot').innerHTML = `
+    <tr>
+      <td>Full calendar — ${n} blocks</td>
+      <td></td><td></td>
+      <td>${r1(t.leads * n)}</td>
+      <td></td>
+      <td>${r1(t.calls * n, (t.calls * n) % 1 ? 1 : 0)}</td>
+      <td style="color:var(--secondary)">${r1(t.students * n, (t.students * n) % 1 ? 1 : 0)}</td>
+    </tr>`;
+
+  document.getElementById('yt-students').textContent = r1(t.students * n, (t.students * n) % 1 ? 1 : 0);
+  document.getElementById('yt-sub').textContent =
+    'across ' + n + ' blocks, ' + fmt(adStart(sorted[0])) + ' to ' + fmt(lastWorkshop(sorted[n - 1]));
+  document.getElementById('yt-blocks').textContent = n;
+  document.getElementById('yt-leads').textContent = r1(t.leads * n);
+  document.getElementById('yt-calls').textContent = r1(t.calls * n, (t.calls * n) % 1 ? 1 : 0);
+  document.getElementById('yt-perblock').textContent = r1(t.students, t.students % 1 ? 1 : 0);
+
+  // Mirror the per-block targets onto the calendar cards
+  document.querySelectorAll('[data-targets-for]').forEach(el => {
+    el.innerHTML = `
+      <span class="ad-target"><b>${r1(t.leads)}</b> leads</span>
+      <span class="ad-target"><b>${r1(t.calls, t.calls % 1 ? 1 : 0)}</b> booked calls</span>
+      <span class="ad-target"><b>${r1(t.students, t.students % 1 ? 1 : 0)}</b> students</span>
+      <span class="ad-target" style="color:var(--text-muted)">${r1(t.leadsPerWeek, 1)} leads / week</span>`;
+  });
+}
+
+/* ── Tabs ── */
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('.tab-panel').forEach(p =>
+      p.classList.toggle('active', p.id === 'panel-' + btn.dataset.tab));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+/* ── Goal inputs ── */
+['in-leads', 'in-call', 'in-close'].forEach(id =>
+  document.getElementById(id).addEventListener('input', renderGoals));
+
+document.getElementById('base-calls').addEventListener('click', () => {
+  closeBase = 'calls';
+  document.getElementById('base-calls').classList.add('on');
+  document.getElementById('base-leads').classList.remove('on');
+  renderGoals();
+});
+document.getElementById('base-leads').addEventListener('click', () => {
+  closeBase = 'leads';
+  document.getElementById('base-leads').classList.add('on');
+  document.getElementById('base-calls').classList.remove('on');
+  renderGoals();
+});
+
+renderYearLabel();
+renderYearView();
+renderBlocks();
+renderGoals();
+
+(() => {
+  const s = BLOCKS.slice().sort((a, b) => parseDate(a.startDate) - parseDate(b.startDate));
+  document.getElementById('footer-updated').textContent =
+    'Covers ' + fmt(adStart(s[0])) + ' — ' + fmt(lastWorkshop(s[s.length - 1]));
+})();
+</script>
+
+</body>
+</html>
