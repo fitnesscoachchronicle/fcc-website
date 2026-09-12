@@ -16,6 +16,14 @@ Type: A      Name: www    Value: 216.198.79.65
  — Vercel will tell him what to use. Everything below must NOT change.)
 
 --------------------------------------------------------------------
+STUDENT LEARNING PLATFORM — Moodle, hosted on Vultr. DO NOT LOSE.
+--------------------------------------------------------------------
+Type: A      Name: learning    Value: 192.248.166.202
+
+(learning.fitnesscoachchronicle.com is the student course login.
+ It is not on Vercel and must not change when the site moves.)
+
+--------------------------------------------------------------------
 EMAIL — Google Workspace. Get these wrong and mail breaks.
 --------------------------------------------------------------------
 Type: MX     Name: @      Priority: 1     Value: smtp.google.com
