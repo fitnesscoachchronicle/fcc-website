@@ -62,7 +62,9 @@ export default async function handler(req, res) {
                 text: String(r.originalText?.text || r.text?.text || '').trim().slice(0, 2000),
                 publishedAt: r.publishTime || null
             }))
-            .filter((r) => r.text && r.rating >= 1);
+            .filter((r) => r.text && r.rating >= 1)
+            // Newest first (Google's own order is "most relevant"). Undated reviews go last.
+            .sort((a, b) => (Date.parse(b.publishedAt) || 0) - (Date.parse(a.publishedAt) || 0));
 
         res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=86400');
         return res.status(200).json({
