@@ -1,0 +1,131 @@
+/* Google reviews carousel — self-contained so it works on every page style
+   (shared stylesheet pages and the self-contained enrol / guide pages). */
+
+.greviews {
+    --gr-bg: var(--surface, rgba(255, 255, 255, 0.03));
+    --gr-border: var(--surface-border, rgba(255, 255, 255, 0.09));
+    --gr-text: var(--text-body, #94a3b8);
+    --gr-head: var(--text-heading, #f8fafc);
+    --gr-accent: var(--secondary, #1ee6fd);
+    --gr-star: var(--gold, #f5c842);
+    position: relative;
+    margin-top: 2.5rem;
+    text-align: left;
+}
+
+.greviews-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.25rem 1rem;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.greviews-track::-webkit-scrollbar { display: none; }
+.greviews-track:focus-visible { outline: 2px solid var(--gr-accent); outline-offset: 4px; border-radius: 12px; }
+
+.greview {
+    flex: 0 0 calc((100% - 2.5rem) / 3);
+    min-width: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.6rem;
+    background: var(--gr-bg);
+    border: 1px solid var(--gr-border);
+    border-radius: 18px;
+}
+
+.greview-head { display: flex; align-items: center; gap: 0.75rem; }
+.greview-avatar {
+    flex: 0 0 auto;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--primary, #109baa), var(--secondary, #1ee6fd));
+    color: #0a0c10;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+}
+.greview-who { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; }
+.greview-name {
+    color: var(--gr-head);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+a.greview-name:hover { color: var(--gr-accent); }
+.greview-meta { font-size: 0.78rem; color: var(--gr-text); }
+.greview-g { flex: 0 0 auto; width: 20px; height: 20px; }
+
+.greview-stars { color: var(--gr-star); letter-spacing: 2px; font-size: 1rem; line-height: 1; }
+
+.greview-text {
+    margin: 0;
+    color: var(--gr-text);
+    font-size: 0.97rem;
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+}
+.greview.is-expanded .greview-text { display: block; -webkit-line-clamp: unset; }
+.greview-more {
+    align-self: flex-start;
+    background: none; border: 0; padding: 0;
+    color: var(--gr-accent);
+    font: inherit; font-size: 0.85rem; font-weight: 700;
+    cursor: pointer;
+}
+
+/* Controls are only shown once JS has made them work. */
+.greviews-controls { display: none; align-items: center; justify-content: center; gap: 1rem; margin-top: 0.5rem; }
+.greviews.is-ready .greviews-controls { display: flex; }
+.greviews-nav {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--gr-border);
+    background: var(--gr-bg);
+    color: var(--gr-head);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+.greviews-nav:hover, .greviews-nav:focus-visible { border-color: var(--gr-accent); color: var(--gr-accent); outline: none; }
+.greviews-nav svg { width: 18px; height: 18px; }
+.greviews-dots { display: flex; gap: 0.5rem; align-items: center; }
+.greviews-dot {
+    width: 9px; height: 9px;
+    padding: 0;
+    border-radius: 50%;
+    border: 0;
+    background: var(--gr-border);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.greviews-dot.is-active { background: var(--gr-accent); transform: scale(1.25); }
+
+.greviews-actions {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--gr-text);
+}
+.greviews-actions a { color: var(--gr-accent); font-weight: 700; text-decoration: none; }
+.greviews-actions a:hover { text-decoration: underline; }
+
+@media (max-width: 980px) {
+    .greview { flex-basis: calc((100% - 1.25rem) / 2); }
+}
+@media (max-width: 640px) {
+    .greview { flex-basis: 88%; padding: 1.35rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .greviews-track { scroll-behavior: auto; }
+}
